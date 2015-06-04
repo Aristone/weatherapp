@@ -90,45 +90,52 @@ img {
  */
 
  .container {
-    display:block;
+    display:absolute;
     position: absolute;
-    top:0;
-    left:0;
+    background-color: ivory;
+   
     
 }
 
  
  .top {
     display:block;
-    position: absolute;
+    position: relative;
     top:0;
-    right: ;
+    right:0;
     font-size: 2em;
     font-family: 'Open Sans', sans-serif;
-    margin: 5% 0% 0% 20%;
-    padding: 5% 0% 0% 10%;
+    margin: 1% 10% 0% 30%;
+    padding: 0% 0% 0% 0%;
+    color: darkolivegreen;
  }
 .temp {
     display:block;
-    position: absolute;
-    top:100px;
+    position: inline-block;
+    float:left;
+    top:0;
     left:0;
-    margin: 5% 0% 0% 20%;
-    padding: 5% 0% 0% 10%;
-    font-size: 1.5em;
+    margin: 10% 5% 5% 25%;
+    padding: 0% 0% 0% 0%;
+    font-size: .8em;
     font-family: 'Lora', serif;
+    color: darkolivegreen;
+    border: solid darkkhaki 2px;
 }
     
 
 .weather {
      display:block;
-     position: absolute;
-     top:200px;
+     position: inline-block;
+     float: right;
+     top:0;
      left:0;
-     margin: 5% 0% 0% 20%;
-     padding: 5% 0% 0% 10%;
-     font-size: 1.5em;
+     margin: 10% 15% 5% 0%;
+     padding: 0% 0% 0% 0%;
+     font-size: .8em;
      font-family: 'Lora', serif;
+     color: darkolivegreen;
+     border: solid darkkhaki 2px;
 
  }
         
@@ -141,7 +148,8 @@ img {
      font-size: 1.2em;
      font-family: 'Lora', serif;
      margin: 5% 0% 0% 20%;
-     padding: 5% 0% 0% 10%;
+     padding: 15% 0% 0% 10%;
+     color: darkolivegreen;
 }
                 
 
@@ -154,7 +162,10 @@ img {
      font-size: 1.2em;
      font-family: 'Lora', serif;
      margin: 5% 0% 0% 20%;
-     padding: 5% 0% 0% 10%;
+     padding: 15% 0% 0% 10%;
+     color: darkolivegreen;
+
+
 }
 
                 
