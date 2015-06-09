@@ -53,12 +53,12 @@ var ForecastView = backbone.View.extend({
         <p>${forecastJSON.currently.temperature}</p>
     </div>, <div class="current">Current Weather<br>
         <p>${forecastJSON.currently.summary}</p>
-    </div>`, 
-    // el: '.current'
-    // id: 'forecast-view'
-    // template: (forecastJSON) => `<div>Current Weather
-    //     <p>${forecastJSON.currently.summary}</p>
-    // </div>`,
+    </div>`,// <div class="lat">Current Weather
+    //     <p>${forecastJSON.currently.latitude}</p>
+    // </div>`, <div class="lon">Current Weather
+    //     <p>${forecastJSON.currently.longitude}</p>
+    // </div>`, 
+    
     render: function(data){
         this.el.innerHTML = this.template(data)
     },

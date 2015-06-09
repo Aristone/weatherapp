@@ -116,11 +116,12 @@ img {
     top:0;
     left:0;
     margin: 10% 5% 5% 25%;
-    padding: 0% 0% 0% 0%;
+    padding: 1% 1% 0% 1%;
     font-size: 1em;
     font-family: 'Lora', serif;
     color: darkolivegreen;
     border: solid darkkhaki 2px;
+    border-radius: 15%;
 }
     
 
@@ -131,12 +132,12 @@ img {
      top:0;
      left:0;
      margin: 10% 15% 5% 0%;
-     padding: 0% 0% 0% 0%;
+     padding:  1% 1% 0% 1%;
      font-size: 1em;
      font-family: 'Lora', serif;
      color: darkolivegreen;
      border: solid darkkhaki 2px;
-
+     border-radius: 15%;
  }
         
 
@@ -169,7 +170,11 @@ img {
 }
 
  br{
-    border: darkolivegreen 2px;
+
+    content: '.';
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px dashed darkolivegreen;
  }  
 
 
