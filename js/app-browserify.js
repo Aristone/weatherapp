@@ -47,11 +47,11 @@ window.Forecast = backbone.Model.extend({
 var f = new Forecast({lat:26, lng: -90})
 
 var ForecastView = backbone.View.extend({
-    el: '.temp',
+    el: '.container',
     id: 'forecast-view',
-    template: (forecastJSON) => `<div class="temp">Current Temp
+    template: (forecastJSON) => `<div class="temp">Current Temp<br>
         <p>${forecastJSON.currently.temperature}</p>
-    </div>, <div class="current">Current Weather
+    </div>, <div class="current">Current Weather<br>
         <p>${forecastJSON.currently.summary}</p>
     </div>`, 
     // el: '.current'

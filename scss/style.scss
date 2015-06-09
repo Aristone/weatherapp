@@ -95,8 +95,8 @@ img {
     background-color: ivory;
    
     
-}
-*/
+}*/
+
  
  .top {
     display:block;
@@ -117,7 +117,7 @@ img {
     left:0;
     margin: 10% 5% 5% 25%;
     padding: 0% 0% 0% 0%;
-    font-size: .8em;
+    font-size: 1em;
     font-family: 'Lora', serif;
     color: darkolivegreen;
     border: solid darkkhaki 2px;
@@ -132,7 +132,7 @@ img {
      left:0;
      margin: 10% 15% 5% 0%;
      padding: 0% 0% 0% 0%;
-     font-size: .8em;
+     font-size: 1em;
      font-family: 'Lora', serif;
      color: darkolivegreen;
      border: solid darkkhaki 2px;
@@ -168,7 +168,9 @@ img {
 
 }
 
-   
+ br{
+    border: darkolivegreen 2px;
+ }  
 
 
 
