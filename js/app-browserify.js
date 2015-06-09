@@ -37,6 +37,8 @@ window.Forecast = backbone.Model.extend({
         })
     },
 
+
+
     urlRoot: function(){
         return `https://api.forecast.io/forecast/${this.get('key')}/${this.get('lat')},${this.get('lng')}?callback=?`
     }
@@ -47,20 +49,16 @@ var f = new Forecast({lat:26, lng: -90})
 var ForecastView = backbone.View.extend({
     el: '.temp',
     id: 'forecast-view',
-    events: {
-        "click": "alert1",
-        "click a": "alert2"
-    },
-    alert1: function(){
-        alert(1)
-    },
-    alert2: function(){
-        alert(2)
-    },
-    template: (forecastJSON) => `<div>
+    template: (forecastJSON) => `<div class="temp">Current Temp
         <p>${forecastJSON.currently.temperature}</p>
-        <span>${new Date().toLocaleTimeString()}</span>
-    </div>`,
+    </div>, <div class="current">Current Weather
+        <p>${forecastJSON.currently.summary}</p>
+    </div>`, 
+    // el: '.current'
+    // id: 'forecast-view'
+    // template: (forecastJSON) => `<div>Current Weather
+    //     <p>${forecastJSON.currently.summary}</p>
+    // </div>`,
     render: function(data){
         this.el.innerHTML = this.template(data)
     },
@@ -77,6 +75,6 @@ window.x = new ForecastView({
 
 setInterval(() => {
     f.fetch()
-}, 5*1000)
+}, 5*100000)
 
 f.fetch()
