@@ -1,84 +1,82 @@
-
-// just Node?
-// var fetch = require('node-fetch')
-// Browserify?
-require('whatwg-fetch') //--> not a typo, don't store as a var
-
-// other stuff that we don't really use in our own code
-// var Pace = require("../bower_components/pace/pace.js")
-
-// require your own libraries, too!
- 
-
- 
-// function app() {
-    // start app
-    // new Router()
-// }
-
 "use strict";
 
+// es5 polyfills, powered by es5-shim
 require("es5-shim")
 
+// es6 polyfills, powered by babel
+
 require("babel/register")
-
+var backbone = require('backbone')
 var Promise = require('es6-promise').Promise
+require('whatwg-fetch') 
 
-var $ = require('jquery')
+window.backbone = backbone
+window.$ = backbone.$
+window._ = require("underscore")
 
-var key = 'c91eeae561eca7bb95874e5914fbe4d0'
+var key = `c91eeae561eca7bb95874e5914fbe4d0`
 
-var GPS = new Promise((res, rej) => {
-    
-    navigator.geolocation.getCurrentPosition(
-        
-        (gpsData) => res({ 
-            lat: gpsData.coords.latitude, 
-            lon: gpsData.coords.longitude }),
-        (error) => rej(error.message)
-    )
-})
-	
+window.Forecast = backbone.Model.extend({
+    defaults: {
+        key: key
+    },
 
-GPS.then((ll) => {
-    
-    var url = `https: api.forecast.io/forecast/${key}/${ll.lat},${ll.lon}?callback=?`
-    var x = $.getJSON(url).then((result) => ${key}: ${ll.lat[key]}(result))
+    validate: function(attrs) {
+        if (!attrs.lat || !attrs.lng) return "No lat/lng provided."
+    },
 
+    initialize: function(){
+        this.on("request", () => {
+            console.log('requesting data')
+        })
+        this.on("sync", () => {
+            console.log('request finished')
+        })
+        this.on("error", (...args) => {
+            console.error(args)
+        })
+    },
 
-   
-    // $.getJSON("demo_ajax_json.js", function(result){
-    //     $.each(result, function(i, field){
-    //         $("div").append(field + " ");
-
-
-    
-
-
-    var .lat = `${ll.lat}`
-    var .long = `${ll.lon}`
-    var current_temp = current_data.apparentTemperature
-    var current_weather = 
-        
-
-        
-    qs('.lat').innerHtml = 
-    qs('.long').innerHtml =  
-    qs('.temp').innerHtml =
-    qs('.weather').innerHtml =
-
-
-
+    urlRoot: function(){
+        return `https://api.forecast.io/forecast/${this.get('key')}/${this.get('lat')},${this.get('lng')}?callback=?`
+    }
 })
 
+var f = new Forecast({lat:26, lng: -90})
 
+var ForecastView = backbone.View.extend({
+    el: '.temp',
+    id: 'forecast-view',
+    events: {
+        "click": "alert1",
+        "click a": "alert2"
+    },
+    alert1: function(){
+        alert(1)
+    },
+    alert2: function(){
+        alert(2)
+    },
+    template: (forecastJSON) => `<div>
+        <p>${forecastJSON.currently.temperature}</p>
+        <span>${new Date().toLocaleTimeString()}</span>
+    </div>`,
+    render: function(data){
+        this.el.innerHTML = this.template(data)
+    },
+    initialize: function(){
+        this.listenTo(this.model, "sync", function(m){
+            this.render(m.toJSON())
+        })
+    }
+})
 
+window.x = new ForecastView({
+    model: f
+})
 
+setInterval(() => {
+    f.fetch()
+}, 5*1000)
 
-
-
-
-
-
-
-
+f.fetch()
